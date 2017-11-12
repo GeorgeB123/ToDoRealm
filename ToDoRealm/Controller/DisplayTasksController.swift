@@ -25,6 +25,7 @@ class DisplayTasksController: UITableViewController, UISearchBarDelegate, UISear
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        searchController.searchBar.selectedScopeButtonIndex = 0
         self.tableView.reloadData()
     }
     
