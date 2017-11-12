@@ -71,8 +71,11 @@ class DisplayTasksController: UITableViewController, UISearchBarDelegate, UISear
         guard let editTaskController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TaskEditor") as? TaskEditorController else {
             fatalError("View does not exist")
         }
-        guard let currentRow = tasks?[indexPath.row] else {
+        guard var currentRow = tasks?[indexPath.row] else {
             fatalError("Row does not exist")
+        }
+        if let filteredRow = filteredTasks?[indexPath.row], (isSearching)  {
+            currentRow = filteredRow
         }
         editTaskController.editingTask = currentRow
         self.navigationController!.pushViewController(editTaskController, animated: true)
