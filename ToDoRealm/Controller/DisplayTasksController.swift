@@ -28,11 +28,9 @@ class DisplayTasksController: UITableViewController, UISearchBarDelegate, UISear
         self.tableView.reloadData()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        searchController.dismiss(animated: false, completion: nil)
+    override func viewDidDisappear(_ animated: Bool) {
+        searchController.isActive = false
     }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -79,6 +77,7 @@ class DisplayTasksController: UITableViewController, UISearchBarDelegate, UISear
         }
         editTaskController.editingTask = currentRow
         self.navigationController!.pushViewController(editTaskController, animated: true)
+
     }
     
     // Override to support editing the table view.
@@ -100,6 +99,7 @@ class DisplayTasksController: UITableViewController, UISearchBarDelegate, UISear
         guard let addTaskController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TaskEditor") as? TaskEditorController else {
             fatalError("View does not exist")
         }
+        
         self.navigationController!.pushViewController(addTaskController, animated: true)
     }
 

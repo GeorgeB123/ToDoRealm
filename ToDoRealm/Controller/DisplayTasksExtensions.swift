@@ -54,8 +54,10 @@ extension DisplayTasksController {
         searchController.searchBar.delegate = self
         searchController.searchBar.scopeButtonTitles = Constants.differentSearchButtonCriteria
         searchController.searchResultsUpdater = self
-        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
         searchController.dimsBackgroundDuringPresentation = false
+        self.extendedLayoutIncludesOpaqueBars = true
+        self.definesPresentationContext=true
         self.tableView.tableHeaderView = searchController.searchBar
     }
     
