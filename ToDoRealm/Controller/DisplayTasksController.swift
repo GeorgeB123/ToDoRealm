@@ -46,7 +46,6 @@ class DisplayTasksController: UITableViewController, UISearchBarDelegate, UISear
         }
         return tasksRemaining
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as? TaskCell else{
@@ -92,7 +91,7 @@ class DisplayTasksController: UITableViewController, UISearchBarDelegate, UISear
             self.tableView.reloadData()
         }
     }
-
+    
     //MARK: Actions
     
     @IBAction func addTask(_ sender: UIBarButtonItem) {

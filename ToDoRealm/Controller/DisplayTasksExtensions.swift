@@ -54,11 +54,12 @@ extension DisplayTasksController {
         searchController.searchBar.delegate = self
         searchController.searchBar.scopeButtonTitles = Constants.differentSearchButtonCriteria
         searchController.searchResultsUpdater = self
-        searchController.hidesNavigationBarDuringPresentation = true
         searchController.dimsBackgroundDuringPresentation = false
-        self.extendedLayoutIncludesOpaqueBars = true
         self.definesPresentationContext=true
-        self.tableView.tableHeaderView = searchController.searchBar
+        self.navigationItem.searchController = searchController
+        searchController.hidesNavigationBarDuringPresentation = false
+        self.definesPresentationContext = true
+        self.navigationItem.hidesSearchBarWhenScrolling = false;
     }
     
     func dateFormatterConfig() -> DateFormatter {
