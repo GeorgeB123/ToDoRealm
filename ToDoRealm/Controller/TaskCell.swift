@@ -24,6 +24,12 @@ class TaskCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         setColour()
     }
+
+}
+
+//MARK: Private Methods
+
+extension TaskCell {
     
     func setColour() {
         if priorityColour <= Constants.lowerBounds {
@@ -34,4 +40,5 @@ class TaskCell: UITableViewCell {
             backgroundColor = UIColor(hue: 0.025, saturation: 0.4, brightness: 1, alpha: 1.0)
         }
     }
+    
 }

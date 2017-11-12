@@ -32,16 +32,21 @@ extension DisplayTasksController {
         filterSearchController(searchBar: searchBar)
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchController.searchBar.selectedScopeButtonIndex = 0
+    }
+    
     func filterSearchController(searchBar: UISearchBar){
         guard let scopeString = searchBar.scopeButtonTitles?[searchBar.selectedScopeButtonIndex] else { return }
+        isSearching = true
         if scopeString == Constants.scopeButtonPriority{
-            isSearching = true
             filteredTasks = tasks?.sorted(byKeyPath: "priority", ascending: false)
         }else if scopeString == Constants.scopeButtonDate{
-            isSearching = true
             filteredTasks = tasks?.sorted(byKeyPath: "date", ascending: false)
+        } else {
+            filteredTasks = tasks
         }
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
 
 }

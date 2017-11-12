@@ -98,7 +98,6 @@ class DisplayTasksController: UITableViewController, UISearchBarDelegate, UISear
         guard let addTaskController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TaskEditor") as? TaskEditorController else {
             fatalError("View does not exist")
         }
-        
         self.navigationController!.pushViewController(addTaskController, animated: true)
     }
 
